@@ -431,36 +431,28 @@ sk_prepare_cmsgs6(sock *s, struct msghdr *msg, void *cbuf, size_t cbuflen)
 static inline int
 sk_set_ttl4(sock *s, int ttl)
 {
-  if (setsockopt(s->fd, SOL_IP, IP_TTL, &ttl, sizeof(ttl)) < 0)
-    ERR("IP_TTL");
-
+  // Doesn't support by VPP Host Stack
   return 0;
 }
 
 static inline int
 sk_set_ttl6(sock *s, int ttl)
 {
-  if (setsockopt(s->fd, SOL_IPV6, IPV6_UNICAST_HOPS, &ttl, sizeof(ttl)) < 0)
-    ERR("IPV6_UNICAST_HOPS");
-
+  // Doesn't support by VPP Host Stack
   return 0;
 }
 
 static inline int
 sk_set_tos4(sock *s, int tos)
 {
-  if (setsockopt(s->fd, SOL_IP, IP_TOS, &tos, sizeof(tos)) < 0)
-    ERR("IP_TOS");
-
+  // Doesn't support by VPP Host Stack
   return 0;
 }
 
 static inline int
 sk_set_tos6(sock *s, int tos)
 {
-  if (setsockopt(s->fd, SOL_IPV6, IPV6_TCLASS, &tos, sizeof(tos)) < 0)
-    ERR("IPV6_TCLASS");
-
+  // Doesn't support by VPP Host Stack
   return 0;
 }
 

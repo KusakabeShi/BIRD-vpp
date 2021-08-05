@@ -30,7 +30,19 @@ struct tcp_md5sig_ext {
 
 
 /* Linux does not care if sa_len is larger than needed */
-#define SA_LEN(x) sizeof(sockaddr)
+/* But VPP care */
+static inline int 
+SA_LEN(sockaddr x){
+	struct sockaddr_in *sa = (struct sockaddr_in*)&x;
+	short af = sa->sin_family;
+	//printf("AF=%hu\n",af);
+	if (af == AF_INET){
+		return sizeof(struct sockaddr_in);
+	}else if (af == AF_INET6){
+		return sizeof(struct sockaddr_in6);
+	}
+	return 32;
+};
 
 
 /*
