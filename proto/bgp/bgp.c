@@ -2021,9 +2021,6 @@ bgp_postconfig(struct proto_config *CF)
 	cf_error("Mismatched IGP table type");
     }
 
-    if (cf->multihop && (cc->gw_mode == GW_DIRECT))
-      cf_error("Multihop BGP cannot use direct gateway mode");
-
     if ((cc->gw_mode == GW_RECURSIVE) && cc->c.table->sorted)
       cf_error("BGP in recursive mode prohibits sorted table");
 
